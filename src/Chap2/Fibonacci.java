@@ -1,39 +1,39 @@
 package Chap2;
+
 /**
- * ÏÖÔÚÒªÇóÊäÈëÒ»¸öÕûÊın£¬ÇëÄãÊä³öì³²¨ÄÇÆõÊıÁĞµÄµÚnÏî¡£
- * ì³²¨ÄÇÆõÊıÁĞ£¨Fibonacci sequence£©£¬ÓÖ³Æ»Æ½ğ·Ö¸îÊıÁĞ¡¢ÒòÊıÑ§¼ÒÁĞ°ºÄÉ¶à¡¤ì³²¨ÄÇÆõ£¨Leonardoda Fibonacci£©
- * ÒÔÍÃ×Ó·±Ö³ÎªÀı×Ó¶øÒıÈë£¬¹ÊÓÖ³ÆÎª¡°ÍÃ×ÓÊıÁĞ¡±£¬Ö¸µÄÊÇÕâÑùÒ»¸öÊıÁĞ£º1¡¢1¡¢2¡¢3¡¢5¡¢8¡¢13¡¢21¡¢34¡¢¡­¡­ÔÚÊıÑ§ÉÏ£¬ì³²¨ÄÉÆõ
- * ÊıÁĞÒÔÈçÏÂ±»ÒÔµİÍÆµÄ·½·¨¶¨Òå£ºF(1)=1£¬F(2)=1, F(3)=2,F(n)=F(n-1)+F(n-2)£¨n>=4£¬n¡ÊN*£©
+ * ç°åœ¨è¦æ±‚è¾“å…¥ä¸€ä¸ªæ•´æ•°nï¼Œè¯·ä½ è¾“å‡ºæ–æ³¢é‚£å¥‘æ•°åˆ—çš„ç¬¬né¡¹ã€‚
  */
 public class Fibonacci {
-	/*ÍÆ¼öµü´ú·¨*/
-	public static int fib1(int n) {
-		int numN;
-		if(n<=0) {
-			return 0;
-		}
-		int a=0;
-		int b=1;
-		 while(n>0) {
-			 b=a+b;
-			 a=b-a;
-			 n--;
-		 }
-		return a;
-	}
-	/*µİ¹é²»ÍÆ¼ö*/
-	
-	public static int fib2(int n) {
-		if(n<=0) {
-			return 0;
-		}
-		if (n==1) {
-			return 1;
-		}
-		return fib2(n-1)+fib2(n-2);
-}
-	public static void main(String[] args) {
-        System.out.println(fib1(8));
-        System.out.println(fib2(8));
+    /**
+     * æ¨èè¿­ä»£æ³•
+     */
+    public int fib(int n) {
+        if (n <= 0) {
+            return 0;
+        }
+
+        int a = 0;
+        int b = 1;
+        while (n > 0) {
+            b = a + b;
+            a = b - a; // a + b -a -> a = bä¹Ÿå°±æ˜¯åŸæ¥çš„bèµ‹å€¼ç»™a
+            n--;
+        }
+        return a;
+    }
+
+    /**
+     * é€’å½’ä¸æ¨è
+     */
+    public int fib2(int n) {
+        if (n <= 0) {
+            return 0;
+        }
+
+        if (n == 1) {
+            return 1;
+        }
+
+        return fib2(n-1) +fib(n-2);
     }
 }

@@ -1,89 +1,65 @@
 package Chap2;
 
 import java.util.Arrays;
+
 /**
- * ÔÚÒ»¸ö³¤¶ÈÎªnµÄÊı×éÀïµÄËùÓĞÊı×Ö¶¼ÔÚ0µ½n-1µÄ·¶Î§ÄÚ¡£ Êı×éÖĞÄ³Ğ©Êı×ÖÊÇÖØ¸´µÄ£¬µ«²»ÖªµÀÓĞ¼¸¸öÊı×ÖÊÇÖØ¸´µÄ¡£Ò²²»ÖªµÀÃ¿¸öÊı×ÖÖØ¸´¼¸´Î¡£ÇëÕÒ³öÊı×éÖĞÈÎÒâÒ»¸öÖØ¸´µÄÊı×Ö¡£
- * ÀıÈç£¬Èç¹ûÊäÈë³¤¶ÈÎª7µÄÊı×é{2,3,1,0,2,5,3}£¬ÄÇÃ´¶ÔÓ¦µÄÊä³öÊÇµÚÒ»¸öÖØ¸´µÄÊı×Ö2»òÕß3¡£
+ * åœ¨ä¸€ä¸ªé•¿åº¦ä¸ºnçš„æ•°ç»„é‡Œçš„æ‰€æœ‰æ•°å­—éƒ½åœ¨0åˆ°n-1çš„èŒƒå›´å†…ã€‚ æ•°ç»„ä¸­æŸäº›æ•°å­—æ˜¯é‡å¤çš„ï¼Œä½†ä¸çŸ¥é“æœ‰å‡ ä¸ªæ•°å­—æ˜¯é‡å¤çš„ã€‚ä¹Ÿä¸çŸ¥é“æ¯ä¸ªæ•°å­—é‡å¤å‡ æ¬¡ã€‚è¯·æ‰¾å‡ºæ•°ç»„ä¸­ä»»æ„ä¸€ä¸ªé‡å¤çš„æ•°å­—ã€‚
+ * ä¾‹å¦‚ï¼Œå¦‚æœè¾“å…¥é•¿åº¦ä¸º7çš„æ•°ç»„{2,3,1,0,2,5,3}ï¼Œé‚£ä¹ˆå¯¹åº”çš„è¾“å‡ºæ˜¯ç¬¬ä¸€ä¸ªé‡å¤çš„æ•°å­—2æˆ–è€…3ã€‚
  */
 public class FindDuplicate {
-	 /**·½·¨Ò»£º
-     * ÏÈ½«Êı×éÅÅĞò£¬Èç¹ûÓĞÖØ¸´ÔªËØ½«»áÏàÁÚ¡£È»ºóÏàÁÚÔªËØÁ½Á½±È½Ï¼´¿É
-     * @param numbers ´ı²éÕÒµÄÊı×é
-     * @param length Êı×éµÄ³¤¶È£¬ÆäÊµ¾ÍÊÇnumbers.length
-     * @param duplication Êı×éÓÃÓÚ±£´æÖØ¸´Êı×Ö£¬µÚÒ»¸ö±»ÕÒµ½µÄÖØ¸´Êı×Ö´æ·ÅÔÚduplication[]ÖĞ
-     * @return Èç¹ûÔÚÊı×éÖĞÓĞÖØ¸´ÔªËØ
-     */
-	public boolean duplicate1(int numbers[],int length,int [] duplication) {
-		if (numbers==null || length==0) {
-			return false;
-		}
-		Arrays.sort(numbers);
-		for(int i=0;i<length-1;i++) {
-			if(numbers[i]==numbers[i+1]) {
-				duplication[0]=numbers[i];
-			return true;
-			}
-		}
-		return false;
-	}
     /**
-     * ÍÆ¼öµÄ×ö·¨£¬Í¨¹ı½»»»ÔªËØ£¬½«Öµi±£´æµ½numbers[i]
-     * ÔÚnumbers[i]²»ºÍiÏàµÈÊ±£¬Èç¹ûnumbers[i]ºÍnumbers[numbers[i]]ÏàµÈ¾ÍËµÃ÷ÖØ¸´ÔªËØ£»
-     * ·ñÔò¾Í½»»»ÕâÁ½¸öÔªËØ£¬Õâ¸ö¹ı³ÌÏàµ±ÓÚÅÅĞò¡£¾Ù¸öÀı×Ó£¬Í¨¹ı½»»»½«2·ÅÈënumbers[2]¡£
+     * æˆ‘æƒ³åˆ°çš„æ–¹æ³•ï¼Œå…ˆå°†æ•°ç»„æ’åºï¼Œå¦‚æœæœ‰é‡å¤å…ƒç´ å°†ä¼šç›¸é‚»ã€‚ç„¶åç›¸é‚»å…ƒç´ ä¸¤ä¸¤æ¯”è¾ƒå³å¯
+     * @param numbers å¾…æŸ¥æ‰¾çš„æ•°ç»„
+     * @param length æ•°ç»„çš„é•¿åº¦ï¼Œå…¶å®å°±æ˜¯numbers.length
+     * @param duplication ç”¨äºä¿å­˜é‡å¤æ•°å­—ï¼Œç¬¬ä¸€ä¸ªè¢«æ‰¾åˆ°çš„é‡å¤æ•°å­—å­˜æ”¾åœ¨duplication[0]ä¸­
+     * @return å¦‚æœåœ¨æ•°ç»„ä¸­æœ‰é‡å¤å…ƒç´ 
      */
-	private void swap(int[] numbers,int p,int q ) {
-		int temp=numbers[p];
-		numbers[p]=numbers[q];
-		numbers[q]=temp;
-		
-	}
-	public boolean duplicate2(int numbers[],int length,int[] duplicate) {
-		//ÅĞ¶ÏÎªÊı×é²»´æÔÚ»òÕß³¤¶ÈÎª0 £¬ÍË³ö
-		if (numbers==null|| length<=0) {
-			return false;
-		}
-		for(int i=0;i<length;i++) {
-			
-			if(numbers[i]<0||numbers[i]>length-1) {
-				return false;
-			}
-		}
-		/*
-		 * ÍâÑ­»·n´Î£¬È»ºówhileÄÚ²¿ Ïàµ±ÓÚ×öÁËÒ»¸öÅÅĞò£¬½«Ô­±¾ÔÚmÎ»ÖÃÉÏµÄÊı·ÅÔÚmÎ»ÖÃÉÏ£¬
-		 * Èç¹û¸ÃÎ»ÖÃµÄÊıÑ­»·Ò»´Î¡£
-		 * ¾ÙÀı£º¡¾2.3.1.0.2.5.3¡¿
-		 * µÚÒ»´Îfor_i=0:
-		 * [1.3.2.0.2.5.3]
-		 * [3.1.2.0.2.5.3]
-		 * [0.1.2.3.2.5.3]
-		 * µÚ¶şfor_i=1
-		 * [0.1.2.3.2.5.3]
-		 * µÚÈı´Îfor_i=2
-		 * [0.1.2.3.2.5.3]
-		 * µÚËÄ´Îfor_i=3
-		 * [0.1.2.3.2.5.3]
-		 * µÚÎå´Îfor_i=4
-		 * [0.1.2.3.2.5.3]
-		 * return true;ÓĞÖØ¸´Öµ2
-		 * Ìø³öÑ­»·£¬½øĞĞÏÂÒ»²½
-		 * µÚÎå´Îfor_i=5
-		 * [0.1.2.3.2.5.3]
-		 * µÚÁù´Îfor_i=6
-		 * [0.1.2.3.2.5.3]
-		 * return true;ÓĞÖØ¸´Öµ2
-		 * Ìø³öÑ­»·£¬½øĞĞÏÂÒ»²½
-		 * */
-		for(int i=0;i<length;i++) {	
-			while (numbers[i]!=i) {
-				if(numbers[i]==numbers[numbers[i]]) {
-					duplicate[0]=numbers[i];
-					return true;
-				}
-				swap(numbers, i, numbers[i]);
-			}
-	
-		}
-		
-		return false;
-	}
+    public boolean duplicate2(int numbers[],int length,int [] duplication) {
+        if (numbers == null || length == 0){
+            return false;
+        }
+
+        Arrays.sort(numbers);
+        for (int i = 0;i < length - 1;i++) {
+            if (numbers[i] == numbers[i + 1]) {
+                duplication[0] = numbers[i];
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * æ¨èçš„åšæ³•ï¼Œé€šè¿‡äº¤æ¢å…ƒç´ ï¼Œå°†å€¼iä¿å­˜åˆ°numbers[i]
+     * åœ¨numbers[i]ä¸å’Œiç›¸ç­‰æ—¶ï¼Œå¦‚æœnumbers[i]å’Œnumbers[numbers[i]]ç›¸ç­‰å°±è¯´æ˜é‡å¤å…ƒç´ ï¼›
+     * å¦åˆ™å°±äº¤æ¢è¿™ä¸¤ä¸ªå…ƒç´ ï¼Œè¿™ä¸ªè¿‡ç¨‹ç›¸å½“äºæ’åºã€‚ä¸¾ä¸ªä¾‹å­ï¼Œé€šè¿‡äº¤æ¢å°†2æ”¾å…¥numbers[2]ã€‚
+     */
+    public boolean duplicate(int numbers[],int length,int [] duplication) {
+        if (numbers == null || length <= 0) {
+            return false;
+        }
+        for (int i = 0;i < length;i++){
+            if (numbers[i] < 0 || numbers[i] > length -1) {
+                return false;
+            }
+        }
+
+        for (int i = 0; i< length; i++) {
+            while (numbers[i] != i) {
+                // ç°åœ¨numbers[i] != i ï¼Œè®¾numbers[i] = j,æ‰€ä»¥å¦‚æœä¸‹é¢çš„ifæˆç«‹,å°±æ˜¯numbers[i] == numbers[j],è¯´æ˜æ‰¾åˆ° é‡å¤
+                if (numbers[i] == numbers[numbers[i]]) {
+                    duplication[0] = numbers[i];
+                    return true;
+                }
+                swap(numbers, i, numbers[i]);
+            }
+        }
+        return false;
+    }
+
+    private void swap(int[] numbers, int p, int q) {
+        int temp = numbers[p];
+        numbers[p] = numbers[q];
+        numbers[q] = temp;
+    }
 }

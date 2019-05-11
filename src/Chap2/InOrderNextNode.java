@@ -1,16 +1,8 @@
 package Chap2;
-/**
- * ¸ø¶¨Ò»¸ö¶þ²æÊ÷ºÍÆäÖÐµÄÒ»¸ö½áµã£¬ÇëÕÒ³öÖÐÐò±éÀúË³ÐòµÄÏÂÒ»¸ö½áµã²¢ÇÒ·µ»Ø¡£
- * ×¢Òâ£¬Ê÷ÖÐµÄ½áµã²»½ö°üº¬×óÓÒ×Ó½áµã£¬Í¬Ê±°üº¬Ö¸Ïò¸¸½áµãµÄÖ¸Õë¡£
- */
 
 /**
- * ÖÐÐò±éÀú£¨LDR£©ÊÇ¶þ²æÊ÷±éÀúµÄÒ»ÖÖ£¬Ò²½Ð×öÖÐ¸ù±éÀú¡¢ÖÐÐòÖÜÓÎ¡£ÔÚ¶þ²æÊ÷ÖÐ£¬ÖÐÐò±éÀúÊ×ÏÈ±éÀú×ó×ÓÊ÷£¬È»ºó·ÃÎÊ¸ù½áµã£¬×îºó±éÀúÓÒ×ÓÊ÷¡£
- * µÚÒ»ÖÖ£ºÓÐÓÒº¢×Ó£¬ÕÒµ½ÓÒº¢×Ó£¬Ñ­»·±éÀúÓÒº¢×ÓµÄ×ó½Úµã
- * µÚ¶þÖÖ£ºÃ»ÓÐÓÒº¢×Ó£¬¶øÇÒÊÇ¸ùµÄ×óº¢×Ó£¬·µ»Ø¸¸Ç×½Úµã
- * µÚÈýÖÖ£ºÊÇ¸¸Ç×½ÚµãµÄÓÒº¢×Ó£¬¶øÇÒÃ»ÓÐÓÒº¢×Ó£¬Ôò·µ»Ø¸¸Ç×½ÚµãµÄ¸¸½Úµã
- * @author wwq
- *
+ * ç»™å®šä¸€ä¸ªäºŒå‰æ ‘å’Œå…¶ä¸­çš„ä¸€ä¸ªç»“ç‚¹ï¼Œè¯·æ‰¾å‡ºä¸­åºéåŽ†é¡ºåºçš„ä¸‹ä¸€ä¸ªç»“ç‚¹å¹¶ä¸”è¿”å›žã€‚
+ * æ³¨æ„ï¼Œæ ‘ä¸­çš„ç»“ç‚¹ä¸ä»…åŒ…å«å·¦å³å­ç»“ç‚¹ï¼ŒåŒæ—¶åŒ…å«æŒ‡å‘çˆ¶ç»“ç‚¹çš„æŒ‡é’ˆã€‚
  */
 public class InOrderNextNode {
 
@@ -18,16 +10,16 @@ public class InOrderNextNode {
         int val;
         TreeLinkNode left = null;
         TreeLinkNode right = null;
-        // nextÖ¸Ïò¸¸½áµã£¬ÌâÄ¿ÖÐ¸ø¶¨µÄ
+        // nextæŒ‡å‘çˆ¶ç»“ç‚¹
         TreeLinkNode next = null;
+
         TreeLinkNode(int val) {
             this.val = val;
         }
     }
 
     public TreeLinkNode GetNext(TreeLinkNode pNode) {
-    	//µÚÒ»ÖÖÇé¿ö£º
-        // Èç¹ûµ±Ç°½áµãÓÒ×ÓÊ÷²»¿Õ£¬ÄÇÃ´ÖÐÐòÏÂÒ»¸ö½áµãÊÇÓÒ×ÓÊ÷µÄ×î×ó×Ó½áµã£¨Èç¹ûÓÐµÄ»°£©£»Èç¹ûÓÒ×ÓÊ÷Ã»ÓÐ×ó×Ó½áµã¾Í·µ»ØÓÒ×ÓÊ÷¸ù½áµã
+        // å¦‚æžœå½“å‰ç»“ç‚¹å³å­æ ‘ä¸ç©ºï¼Œé‚£ä¹ˆä¸­åºä¸‹ä¸€ä¸ªç»“ç‚¹æ˜¯å³å­æ ‘çš„æœ€å·¦å­ç»“ç‚¹ï¼ˆå¦‚æžœæœ‰çš„è¯ï¼‰ï¼›å¦‚æžœå³å­æ ‘æ²¡æœ‰å·¦å­ç»“ç‚¹å°±è¿”å›žå³å­æ ‘æ ¹ç»“ç‚¹
         if (pNode.right != null) {
             pNode = pNode.right;
             while (pNode.left != null) {
@@ -35,15 +27,13 @@ public class InOrderNextNode {
             }
             return pNode;
         }
-        //µÚÈýÖÖÇé¿ö
-        // Èç¹ûµ±Ç°×Ó½áµãpNodeÓÒ×ÓÊ÷Îª¿Õ
-        // ·µ»ØÉÏ²ãµÄ¸¸½áµã£¬Èç¹û¸¸½áµãµÄÓÒ×Ó½áµã¾ÍÊÇµ±Ç°½áµã£¬¼ÌÐø·µ»Øµ½ÉÏ²ãµÄ¸¸½áµã...Ö±µ½¸¸½áµãµÄ×ó×Ó½áµãµÈÓÚµ±Ç°½áµã
+        // å¦‚æžœå½“å‰å­ç»“ç‚¹pNodeå³å­æ ‘ä¸ºç©º
+        // è¿”å›žä¸Šå±‚çš„çˆ¶ç»“ç‚¹ï¼Œå¦‚æžœçˆ¶ç»“ç‚¹çš„å³å­ç»“ç‚¹å°±æ˜¯å½“å‰ç»“ç‚¹ï¼Œç»§ç»­è¿”å›žåˆ°ä¸Šå±‚çš„çˆ¶ç»“ç‚¹...ç›´åˆ°çˆ¶ç»“ç‚¹çš„å·¦å­ç»“ç‚¹ç­‰äºŽå½“å‰ç»“ç‚¹
         while (pNode.next != null && pNode.next.right == pNode) {
             pNode =  pNode.next;
         }
-        //µÚ¶þÖÖ
-        // Èç¹û¸¸½áµãµÄ×ó×Ó½áµãµÈÓÚµ±Ç°½áµã£¬ËµÃ÷ÏÂÒ»¸öÒª±éÀúµÄ½áµã¾ÍÊÇ¸¸½áµãÁË£»»òÕß¸¸½áµãÎª¿Õ£¨ËµÃ÷µ±Ç°½áµãÊÇroot£©£¬»¹ÊÇ·µ»Ø¸¸½áµã£¨null£©
-        // pNode.next == null »òÕß pNode.next.left == pNode
+        // å¦‚æžœçˆ¶ç»“ç‚¹çš„å·¦å­ç»“ç‚¹ç­‰äºŽå½“å‰ç»“ç‚¹ï¼Œè¯´æ˜Žä¸‹ä¸€ä¸ªè¦éåŽ†çš„ç»“ç‚¹å°±æ˜¯çˆ¶ç»“ç‚¹äº†ï¼›æˆ–è€…çˆ¶ç»“ç‚¹ä¸ºç©ºï¼ˆè¯´æ˜Žå½“å‰ç»“ç‚¹æ˜¯rootï¼‰ï¼Œè¿˜æ˜¯è¿”å›žçˆ¶ç»“ç‚¹ï¼ˆnullï¼‰
+        // pNode.next == null æˆ–è€… pNode.next.left == pNode
         return pNode.next;
     }
 }

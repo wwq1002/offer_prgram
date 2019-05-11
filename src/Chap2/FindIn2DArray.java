@@ -1,76 +1,62 @@
 package Chap2;
-/**
- * ÔÚÒ»¸ö¶şÎ¬Êı×éÖĞ£¬Ã¿Ò»ĞĞ¶¼°´ÕÕ´Ó×óµ½ÓÒµİÔöµÄË³ĞòÅÅĞò£¬Ã¿Ò»ÁĞ¶¼°´ÕÕ´ÓÉÏµ½ÏÂµİÔöµÄË³ĞòÅÅĞò¡£
- * Íê³ÉÒ»¸öº¯Êı£¬ÊäÈëÕâÑùµÄÒ»¸ö¶şÎ¬Êı×éºÍÒ»¸öÕûÊı£¬ÅĞ¶ÏÊı×éÖĞÊÇ·ñº¬ÓĞ¸ÃÕûÊı¡£
- */
 
+/**
+ * åœ¨ä¸€ä¸ªäºŒç»´æ•°ç»„ä¸­ï¼Œæ¯ä¸€è¡Œéƒ½æŒ‰ç…§ä»å·¦åˆ°å³é€’å¢çš„é¡ºåºæ’åºï¼Œæ¯ä¸€åˆ—éƒ½æŒ‰ç…§ä»ä¸Šåˆ°ä¸‹é€’å¢çš„é¡ºåºæ’åºã€‚
+ * å®Œæˆä¸€ä¸ªå‡½æ•°ï¼Œè¾“å…¥è¿™æ ·çš„ä¸€ä¸ªäºŒç»´æ•°ç»„å’Œä¸€ä¸ªæ•´æ•°ï¼Œåˆ¤æ–­æ•°ç»„ä¸­æ˜¯å¦å«æœ‰è¯¥æ•´æ•°ã€‚
+ */
 public class FindIn2DArray {
-/**
- * Binary Search--¶ş·Ö²éÕÒ
- *¡¡²ÉÓÃ¶ş·Ö·¨²éÕÒÊ±£¬Êı¾İĞèÊÇÅÅºÃĞòµÄ¡£ »ù±¾Ë¼Ïë£º¼ÙÉèÊı¾İÊÇ°´ÉıĞòÅÅĞòµÄ£¬¶ÔÓÚ¸ø¶¨Öµx£¬´ÓĞòÁĞµÄÖĞ¼äÎ»ÖÃ¿ªÊ¼±È½Ï£¬Èç¹ûµ±Ç°Î»ÖÃÖµµÈÓÚx£¬Ôò²éÕÒ³É¹¦£»
- * ÈôxĞ¡ÓÚµ±Ç°Î»ÖÃÖµ£¬ÔòÔÚÊıÁĞµÄÇ°°ë¶Î ÖĞ²éÕÒ£»Èôx´óÓÚµ±Ç°Î»ÖÃÖµÔòÔÚÊıÁĞµÄºó°ë¶ÎÖĞ¼ÌĞø²éÕÒ£¬Ö±µ½ÕÒµ½ÎªÖ¹¡£
- * ¶ş·Ö·¨²éÕÒÔÚÕë¶Ô´óÁ¿ÓĞĞòÅÅÁĞµÄÇé¿öÏÂ·¢»Ó³öºÜÓÅÔ½µÄĞ§ÂÊ£¬ÆäÊ±¼ä¸´ÔÓ¶ÈO(lgN)¡£
- */
-/**
- * ·½·¨Ò»£º¶ÔÃ¿Ò»ĞĞµÄÒ»Î¬Êı×é×öÒ»¸ö¶ş·Ö²éÕÒ
- * Èç¹û¾ØÕóÊÇM*N,Ò»´Î¶ş·Ö²éÕÒÊÇO(lgN),MĞĞ¾ÍÊÇM*O(lgN)
- * @param target Òª²éÕÒµÄÊı
- * @param array  ¶şÎ¬Êı×é
- * @return trueÔÚÊı¾İÖĞÕÒµ½µÄtarget
- */
-	public boolean Find2(int target,int[][] array) {
-		if(array!=null && array.length>0) {
-			int high=array[0].length-1;
-			for(int i=0;i<array.length;i++) {
-				int low=0;
-				while(low<=high) {
-					int mid=low+(low+high)/2;
-					if(target>array[i][mid]) {
-						low=mid+1;
-							
-					}else if(target<array[i][mid]){
-						high=mid-1;
-						
-					}else {
-						return true;
-					}
-					
-				}
-						
-			}	
-			return false;
-		}
-					
-		return false;
-	}
+    /**
+     * æˆ‘æƒ³åˆ°çš„åšæ³•ï¼Œå¯¹æ¯ä¸€è¡Œçš„ä¸€ç»´æ•°ç»„ä½œäºŒåˆ†æŸ¥æ‰¾.
+     * å¦‚æœçŸ©é˜µæ˜¯M*Nçš„ï¼Œä¸€æ¬¡äºŒåˆ†æŸ¥æ‰¾æ˜¯O(lg N), Mè¡Œå°±æ˜¯O(Mlg N)
+     *
+     * @param target è¦æŸ¥æ‰¾çš„æ•°
+     * @param array  äºŒç»´æ•°ç»„
+     * @return trueå¦‚æœåœ¨æ•°ç»„ä¸­æ‰¾åˆ°target
+     */
+    public boolean Find2(int target, int[][] array) {
+        if (array != null && array.length > 0) {
+            // æ³¨æ„highåœ¨å¾ªç¯å¤–ï¼Œä¸€æ—¦å€¼æ›´æ–°ä¸‹æ¬¡å¾ªç¯ä¸ä¼šå†è¢«åˆå§‹åŒ–ï¼Œå¯å‡å°‘æ¯”è¾ƒæ¬¡æ•°
+            int high = array[0].length - 1;
+            for (int i = 0; i < array.length; i++) {
+                int low = 0;
+                while (low <= high) {
+                    int mid = low + (high - low) / 2;
+                    if (target > array[i][mid]) {
+                        low = mid + 1;
+                    } else if (target < array[i][mid]) {
+                        high = mid - 1;
+                    } else {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+        return false;
+    }
 
-	/**
-	 * ·½·¨¶ş£º¸üÍÆ¼öµÄ×ö·¨
-	 * ÓÉÓÚ¾ØÕó´ÓÉÏµ½ÏÂµİÔö£¬´Ó×óµ½ÓÒµİÔö
-	 * ×ÜÊÇºÍ¶şÎ¬¾ØÕóµÄÓÒÉÏ½ÇÔªËØ±È½Ï£¬£¨¶Ô³ÆµÄ×óÏÂ½ÇÒ²¿ÉÒÔ£©
-	 * Èç¹ûÄ¿±êÊıÖµ±ÈÓÒÉÏ½Ç´ó£¬ÔòÉ¾³ı¸ÃĞĞ£¬Èç¹ûÄ¿±êÊıÖµ±ÈÓÒÉÏ½ÇĞ¡£¬ÔòÉ¾³ı¸ÃÁĞ
-	 *  
-	 */
-	public boolean Find(int target,int[][] array) {
-		if(array!=null && array.length>0) {
-			int N=array.length;//×ÜĞĞÊı
-			int col=array[0].length-1;//ÁĞË÷Òı
-			int row=0;//ĞĞË÷Òı
-			while(row<N&&col>=0) {
-				if(target<array[row][col]) {
-					col--;
-			  } else if (target>array[row][col]) {
-				    row++;
-			}else {
-				return true;
-			}			
-		  }
-			
-		}else
-			return false;
-		
-		return false;
-	}
-	
-	
+    /**
+     * æ›´æ¨èçš„åšæ³•ï¼Œç”±äºçŸ©é˜µä»ä¸Šåˆ°ä¸‹é€’å¢ï¼Œä»å·¦åˆ°å³é€’å¢ã€‚
+     * æ€»æ˜¯å’ŒäºŒç»´çŸ©é˜µçš„å³ä¸Šè§’å…ƒç´ æ¯”è¾ƒï¼ˆå¯¹ç§°åœ°ï¼Œå·¦ä¸‹è§’ä¹Ÿå¯ä»¥ï¼‰
+     * å¦‚æœç›®æ ‡æ¯”å³ä¸Šè§’çš„å¤§ï¼Œåˆ é™¤è¯¥è¡Œï¼Œè¡ŒæŒ‡é’ˆå‘ä¸‹ç§»åŠ¨ï¼›å¦‚æœæ¯”å³ä¸Šè§’çš„å°ï¼Œåˆ é™¤è¯¥åˆ—ï¼Œåˆ—æŒ‡é’ˆå·¦ç§»
+     */
+    public boolean Find(int target, int[][] array) {
+        if (array != null && array.length > 0) {
+            int N = array.length; // æ€»è¡Œæ•°
+            int col = array[0].length - 1; // åˆ—ç´¢å¼•
+            int row = 0; // è¡Œç´¢å¼•
+            // array[row][col]æ˜¯å³ä¸Šè§’çš„å…ƒç´ 
+            while (row < N && col >= 0) {
+                if (target < array[row][col]) {
+                    col--;
+                } else if (target > array[row][col]) {
+                    row++;
+                } else {
+                    return true;
+                }
+            }
+            return false;
+        }
+        return false;
+    }
 }

@@ -1,24 +1,28 @@
-package Chap2;/*
-ÎÒÃÇ¿ÉÒÔÓÃ2*1µÄĞ¡¾ØĞÎºá×Å»òÕßÊú×ÅÈ¥¸²¸Ç¸ü´óµÄ¾ØĞÎ¡£ÇëÎÊÓÃn¸ö2*1µÄĞ¡¾ØĞÎÎŞÖØµşµØ¸²¸ÇÒ»¸ö2*nµÄ´ó¾ØĞÎ£¬×Ü¹²ÓĞ¶àÉÙÖÖ·½·¨£¿
-Õâ¸öÌâºÍÌøÇàÍÜµÄÄÇ¸öÊÇÒ»ÖÂµÄ£¬f(n)=f(n-1)+f(n-2)
-f(1)=1,f(2)=2;f(3)=f(2)+f(1);*/
-public class RectCover {
-	public static int RectCover(int target) {
-		if (target==0) {
-			return 0;
-		}
-		if (target==1) {
-			return 1;
-		}
-		if (target==2) {
-			return 2;
-		}
-		return RectCover(target-1)+RectCover(target-2);
-		
-	}
-	public static void main(String[] args) {
-		int a=RectCover(2);
-		System.out.println(a);
-	}
+package Chap2;
 
+/**
+ * æˆ‘ä»¬å¯ä»¥ç”¨2*1çš„å°çŸ©å½¢æ¨ªç€æˆ–è€…ç«–ç€å»è¦†ç›–æ›´å¤§çš„çŸ©å½¢ã€‚
+ * è¯·é—®ç”¨nä¸ª2*1çš„å°çŸ©å½¢æ— é‡å åœ°è¦†ç›–ä¸€ä¸ª2*nçš„å¤§çŸ©å½¢ï¼Œæ€»å…±æœ‰å¤šå°‘ç§æ–¹æ³•ï¼Ÿ
+ */
+public class RectCover {
+    /**
+     * å’ŒJumpFloorçš„ä»£ç ä¸€æ¨¡ä¸€æ ·ï¼
+     */
+    public int RectCover(int target) {
+        if (target <= 0) {
+            return 0;
+        }
+        if (target == 1) {
+            return 1;
+        }
+
+        int a = 1;
+        int b = 2;
+        while (target > 1) {
+            b = a + b;
+            a = b - a;
+            target--;
+        }
+        return a;
+    }
 }
